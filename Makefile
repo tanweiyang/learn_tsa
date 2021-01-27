@@ -1,8 +1,11 @@
 CC=clang
 
-.PHONY: learn_tsa
+.PHONY: clean
 
 
-learn_tsa: learn_tsa.o
-	$(CC) $^ -o $@
+learn_tsa:  
+
+
+clean:
+	$(RM) *.o learn_tsa
 
