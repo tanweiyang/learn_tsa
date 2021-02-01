@@ -1,4 +1,5 @@
-CC=clang
+CC := clang
+CFLAGS := -Wthread-safety
 
 .PHONY: clean
 
