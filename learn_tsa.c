@@ -1,8 +1,10 @@
 #include "learn_tsa.h"
 #include <stdio.h>
 
-struct MyMutex;
-int resource = 0;
+struct MyMutex myMutex_;
+struct MyMutex myMutex2_;
+
+int resource GUARDED_BY(myMutex2_) = 0;
 
 
 void Lock() NO_THREAD_SAFETY_ANALYSIS
@@ -16,12 +18,18 @@ void Unlock() NO_THREAD_SAFETY_ANALYSIS
 }
 
 
+void unlockunlock() RELEASE(myMutex_)
+{
+    Unlock();
+}
+
 void locklock()
 {
     Lock();
     resource = 1;
     printf("resource = %d", resource);
-    Unlock();
+//    Unlock();
+    unlockunlock();
 }
 
 
