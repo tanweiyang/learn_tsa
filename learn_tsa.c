@@ -5,12 +5,12 @@ struct MyMutex;
 int resource = 0;
 
 
-void Lock()
+void Lock() NO_THREAD_SAFETY_ANALYSIS
 {
     printf("Lock()\n");
 }
 
-void Unlock()
+void Unlock() NO_THREAD_SAFETY_ANALYSIS
 {
     printf("Unlock()\n");
 }
